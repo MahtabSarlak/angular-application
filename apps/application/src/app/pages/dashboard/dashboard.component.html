@@ -1,0 +1,32 @@
+
+  <div class="container mx-auto">
+  <nz-card class=" flex justify-center align-middle pt-16" [nzBordered]="false">
+    <div class="logo flex justify-center">
+      <img
+        alt=""
+        height="170px"
+        src="assets/images/logo.jpg"
+        width="170px"
+      />
+    </div>
+    <form (ngSubmit)="submitForm()" [formGroup]="dashboardForm" nz-form>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username!">
+          <nz-input-group nzPrefixIcon="user"><input formControlName="userName" nz-input placeholder="Username"
+                                                     type="text"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your Password!">
+          <nz-input-group nzPrefixIcon="lock">
+            <input formControlName="password" nz-input placeholder="Password" type="password"/>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <button [nzType]="'primary'" nz-button>Log in</button>
+      Or
+      <a routerLink="/signUp">signUp now!</a>
+    </form>
+  </nz-card>
+</div>
