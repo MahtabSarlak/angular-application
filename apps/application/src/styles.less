@@ -6,13 +6,39 @@
 
 /* You can add global styles to this file, and also import other style files */
 @border-radius-base: 10px;
+@background-color-base: #ba4c4c;
+body{
+  background-color: #efeded !important;
+}
+.page {
+  &__home_section{
+    margin: 50px !important;
+  }
+  &__login_section {
+    background-color: cornflowerblue;
+    &__logo {
+      margin-bottom: 10%;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      background-color: #fff;
 
-.logo {
-  margin-bottom: 10%;
-  text-align: center;
-  background-color: #fff;
+      img {
+        width: 170px;
+      }
+    }
 
-  img {
-    width: 170px;
+    &__form_template {
+      //margin: -77px 48px 60px 48px;
+      padding: 60px 20px;
+      border-radius: 15px;
+      box-shadow: 9px 7px 17px 20px rgb(208 216 243 / 38%);
+      display: flex;
+      justify-content: center;
+      /*// .ant-table-wrapper {*/
+      /*   //   max-width: 99% !important;*/
+      /*   // }*/
+    }
   }
 }
+

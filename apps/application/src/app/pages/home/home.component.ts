@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+
+import { Component, ViewChild, TemplateRef, OnInit, OnDestroy } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NzFormModule} from "ng-zorro-antd/form";
@@ -6,12 +7,16 @@ import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzCardModule} from "ng-zorro-antd/card";
 import {NzInputModule} from "ng-zorro-antd/input";
 import {NzButtonModule} from "ng-zorro-antd/button";
-import {AuthService} from "../../service/auth-service/auth.service";
-import {Router} from "@angular/router";
+import {NzLayoutModule} from "ng-zorro-antd/layout";
+import {NzMenuModule} from "ng-zorro-antd/menu";
+import {RouterLink, RouterLinkActive} from "@angular/router";
+import {NzBadgeModule} from "ng-zorro-antd/badge";
+import {AsyncPipe, NgStyle} from "@angular/common";
+
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: 'app-home',
+  templateUrl: './home.component.html',
   styleUrls: ['../../../styles.less'],
   imports: [
     NzFormModule,
@@ -20,22 +25,24 @@ import {Router} from "@angular/router";
     FormsModule,
     NzCardModule,
     NzInputModule,
-    NzButtonModule
+    NzButtonModule,
+    NzLayoutModule,
+    NzMenuModule,
+    RouterLink,
+    NzBadgeModule,
+    AsyncPipe,
+    NgStyle,
+    RouterLinkActive
   ],
   standalone: true
 })
-export class DashboardComponent implements OnInit {
+export class HomeComponent implements OnInit {
+  isCollapsed = false;
   dashboardForm!: FormGroup;
 
   submitForm(): void {
     if (this.dashboardForm.valid) {
       console.log('submit', this.dashboardForm.value);
-      this.authService.login({
-        username: this.dashboardForm.value.username,
-        password: this.dashboardForm.value.password,
-      });
-      console.log('inja');
-      this.router.navigate(['../home']);
     } else {
       Object.values(this.dashboardForm.controls).forEach(control => {
         if (control.invalid) {
@@ -46,7 +53,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder,private authService: AuthService,private router: Router) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.dashboardForm = this.fb.group({

@@ -1,0 +1,36 @@
+<nz-layout>
+
+  <nz-sider nzTheme="light" nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="0" [nzBreakpoint]="'lg'"
+            style="overflow: auto; height: 100vh; position: fixed; left: 0">
+    <div class="page__login_section__logo">
+      <img
+        alt=""
+        height="170px"
+        src="assets/images/logo.jpg"
+        width="170px"
+      />
+    </div>
+    <nz-divider></nz-divider>
+    <ul nz-menu [nzTheme]="'light'" [nzMode]="isCollapsed?'vertical':'inline'">
+      <li nz-menu-item [routerLink]="['home']" routerLinkActive="ant-menu-item-selected">
+        <span>
+          <i class="anticon anticon-bars"></i>
+          <span class="nav-text">Home
+          </span>
+        </span>
+      </li>
+      <li nz-menu-item [routerLink]="['home']" routerLinkActive="ant-menu-item-selected">
+        <span>
+          <i class="anticon anticon-plus"></i>
+          <span class="nav-text">Add
+          </span>
+        </span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout [ngStyle]="{'margin-left': isCollapsed ? '0px' : '200px'}">
+    <nz-card class="flex h-screen p-10 page__home_section" [nzBordered]="false">
+      //https://github.com/wearetheledger/Angular-antd-auth/tree/master/src/app
+    </nz-card>
+  </nz-layout>
+</nz-layout>
